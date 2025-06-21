@@ -3,6 +3,7 @@
   <test name="TextBox Test">
     <classes>
       <class name="demoqa.tests.TextBoxTest"/>
+      <class name="demoqa.tests.CheckBoxTest"/>
     </classes>
   </test>
 </suite>

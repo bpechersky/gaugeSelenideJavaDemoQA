@@ -9,7 +9,7 @@ public class CheckBoxPage {
     }
 
     public void expandAll() {
-        $(".rct-option-expand-all").click();
+        $(".rct-option-expand-all").scrollIntoView(true).click();
     }
 
     public void selectNotes() {
