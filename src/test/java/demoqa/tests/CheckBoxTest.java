@@ -2,6 +2,10 @@ package demoqa.tests;
 
 import demoqa.TestBase;
 import demoqa.pages.CheckBoxPage;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -18,7 +22,9 @@ public class CheckBoxTest extends TestBase {
         checkBoxPage.openPage();
     }
 
-
+    @Epic("DemoQA")
+    @Feature("Checkbox")
+    @Story("Expand All and Validate Elements")
     @Test
     public void testExpandAllAndVerifyVisibleOptions() {
         checkBoxPage.expandAll();

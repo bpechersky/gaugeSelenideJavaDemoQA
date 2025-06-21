@@ -17,6 +17,11 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
 
+            // Allure reporting
+    Configuration.reportsFolder = "build/allure-results";
+    Configuration.screenshots = true;
+    Configuration.savePageSource = true;
+
     }
 
 

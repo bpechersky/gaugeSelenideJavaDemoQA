@@ -1,9 +1,17 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="DemoQA Suite">
-  <test name="TextBox Test">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+  <test name="All DemoQA Tests">
     <classes>
       <class name="demoqa.tests.TextBoxTest"/>
       <class name="demoqa.tests.CheckBoxTest"/>
+      <class name="demoqa.tests.DraggableTest"/>
+      <class name="demoqa.tests.SelectableTest"/>
+      <class name="demoqa.tests.ResizableTest"/>
+      <class name="demoqa.tests.DroppableTest"/>
+      <class name="demoqa.tests.SortableTest"/>
     </classes>
   </test>
 </suite>
