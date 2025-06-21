@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Maven test output
+/target/
+# Common build output
+/build/
+# IntelliJ project files
+.idea/
+
+
+
+/jarRepositories.xml
