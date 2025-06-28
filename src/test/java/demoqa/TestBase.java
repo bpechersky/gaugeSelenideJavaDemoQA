@@ -4,12 +4,23 @@ import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static java.lang.Thread.sleep;
 
 public class TestBase {
+    @BeforeSuite
+    public void setUp() {
+        Configuration.browser = "chrome";
+        if (System.getenv("CI") != null) {
+            Configuration.headless = true;
+        }
+        Configuration.browserSize = "1920x1080";
+    }
+
+
 
     @BeforeClass
     public void setup() {
