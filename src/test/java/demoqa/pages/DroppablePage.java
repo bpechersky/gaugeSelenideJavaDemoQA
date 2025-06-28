@@ -30,24 +30,22 @@ public class DroppablePage {
 
 
 
-    public void performDragAndDrop() {
-        getDraggable().scrollIntoView(true).shouldBe(visible);
-        getDroppable().scrollIntoView(true).shouldBe(visible);
-
+    public void performDragAndDropWithOffset() {
         WebElement source = getDraggable().toWebElement();
         WebElement target = getDroppable().toWebElement();
 
         int xOffset = target.getLocation().getX() - source.getLocation().getX() + 10;
         int yOffset = target.getLocation().getY() - source.getLocation().getY() + 10;
 
-        Actions actions = new Actions(WebDriverRunner.getWebDriver());
-        actions.moveToElement(source)
+        new Actions(WebDriverRunner.getWebDriver())
+                .moveToElement(source)
                 .clickAndHold()
                 .moveByOffset(xOffset, yOffset)
-                .pause(Duration.ofMillis(500))
+                .pause(java.time.Duration.ofMillis(500))
                 .release()
                 .perform();
     }
+
 
 
 }

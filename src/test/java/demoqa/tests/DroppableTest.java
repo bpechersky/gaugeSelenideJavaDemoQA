@@ -10,35 +10,23 @@ import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class DroppableTest extends TestBase {
 
     DroppablePage droppablePage = new DroppablePage();
 
     @Test
-    public void testDragAndDropWithOffsets() {
-        Configuration.browserSize = "1920x1080";
-
+    public void testDragAndDropWorks() {
         droppablePage.openPage();
 
-        // Ensure elements are visible
-        droppablePage.getDraggable().scrollIntoView(true).shouldBe(visible);
-        droppablePage.getDroppable().scrollIntoView(true).shouldBe(visible);
+        droppablePage.getDraggable().shouldBe(visible);
+        droppablePage.getDroppable().shouldBe(visible);
 
-        WebElement source = droppablePage.getDraggable().toWebElement();
-        WebElement target = droppablePage.getDroppable().toWebElement();
+        droppablePage.performDragAndDropWithOffset();
 
-        int xOffset = target.getLocation().getX() - source.getLocation().getX() + 10;
-        int yOffset = target.getLocation().getY() - source.getLocation().getY() + 10;
-
-        Actions actions = new Actions(WebDriverRunner.getWebDriver());
-        actions.moveToElement(source)
-                .clickAndHold()
-                .moveByOffset(xOffset, yOffset)
-                .pause(java.time.Duration.ofMillis(500))
-                .release()
-                .perform();
-
+        sleep(1000); // allow DOM to update
         droppablePage.getDropText().shouldHave(text("Dropped!"));
     }
+
 }
