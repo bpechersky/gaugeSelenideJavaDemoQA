@@ -23,26 +23,27 @@
     </dependency>
     <dependency>
       <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>${testng.version}</version>
-    <scope>test</scope>
-  </dependency>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-  <groupId>io.qameta.allure</groupId>
-  <artifactId>allure-testng</artifactId>
-  <version>2.24.0</version>
-</dependency>
-
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>2.24.0</version>
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
-    <plugin>
-  <groupId>io.qameta.allure</groupId>
-  <artifactId>allure-maven</artifactId>
-  <version>2.11.2</version>
-</plugin>
+      <!-- Allure plugin -->
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>2.11.2</version>
+      </plugin>
 
+      <!-- Surefire plugin for running TestNG tests -->
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.1.2</version>

@@ -4,9 +4,11 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import demoqa.TestBase;
 import demoqa.pages.DroppablePage;
+import io.qameta.allure.Owner;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
+import io.qameta.allure.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -16,6 +18,10 @@ public class DroppableTest extends TestBase {
 
     DroppablePage droppablePage = new DroppablePage();
 
+    @Epic("DemoQA")
+    @Feature("Droppable")
+    @Story("Drag and Drop validation")
+    @Owner("Branch")
     @Test
     public void testDragAndDropWorks() {
         droppablePage.openPage();
