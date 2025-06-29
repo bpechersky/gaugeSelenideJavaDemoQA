@@ -28,12 +28,13 @@ jobs:
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
       - name: Build and Run Tests
-        run: mvn clean test
+        run: mvn clean test -DsuiteXmlFile=testng.xml
 
       - name: Generate Allure Report
         if: always()
         run: |
-          allure generate target/allure-results --clean -o allure-report
+          ls -la target/allure-results
+            allure generate target/allure-results --clean -o allure-report
 
       - name: Deploy Allure Report to GitHub Pages
         if: always()
