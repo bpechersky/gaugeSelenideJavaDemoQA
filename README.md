@@ -37,3 +37,12 @@ Allure test reports are published automatically on GitHub Pages after each succe
 
 ```bash
 mvn clean test
+
+
+You can paste this directly into your `README.md` and push it:
+
+```bash
+git add README.md
+git commit -m "Add README with Allure report link and badges"
+git push origin master
+
