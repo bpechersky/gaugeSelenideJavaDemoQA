@@ -28,7 +28,7 @@ jobs:
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
       - name: Build and Run Tests
-        run: mvn clean test -DsuiteXmlFile=testng.xml
+        run: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml
 
       - name: Generate Allure Report
         if: always()
