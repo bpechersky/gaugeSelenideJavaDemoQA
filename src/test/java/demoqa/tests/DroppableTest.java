@@ -2,12 +2,15 @@ package demoqa.tests;
 
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.testng.AllureTestNg;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
+@Listeners({AllureTestNg.class})
 public class DroppableTest {
 
     public void removeAds() {

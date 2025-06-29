@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="DemoQA Suite">
     <listeners>
-        <listener class-name="demoqa.utils.AllureListener"/>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
   <test name="All DemoQA Tests">
     <classes>
