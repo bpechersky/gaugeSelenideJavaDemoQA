@@ -1,38 +1,43 @@
 package demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import demoqa.TestBase;
-import demoqa.pages.DroppablePage;
-import io.qameta.allure.Owner;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
-import io.qameta.allure.*;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 
-public class DroppableTest extends TestBase {
+public class DroppableTest {
 
-    DroppablePage droppablePage = new DroppablePage();
-
-    @Epic("DemoQA")
-    @Feature("Droppable")
-    @Story("Drag and Drop validation")
-    @Owner("Branch")
-    @Test
-    public void testDragAndDropWorks() {
-        droppablePage.openPage();
-
-        droppablePage.getDraggable().shouldBe(visible);
-        droppablePage.getDroppable().shouldBe(visible);
-
-        droppablePage.performDragAndDropWithOffset();
-
-        sleep(1000); // allow DOM to update
-        droppablePage.getDropText().shouldHave(text("Dropped!"));
+    public void removeAds() {
+        try {
+            sleep(1500); // Allow ads to load
+            executeJavaScript(
+                    "document.querySelectorAll(" +
+                            "'iframe, #fixedban, .adsbygoogle, .grippy-host, " +
+                            "[id^=\"google_ads_iframe\"], [id*=\"Ad.Plus\"], div[id$=\"container__\"]')" +
+                            ".forEach(el => el.remove());"
+            );
+        } catch (Exception e) {
+            System.out.println("Ad removal failed: " + e.getMessage());
+        }
     }
 
+    @Test
+    public void testDragAndDropWorks() {
+        open("https://demoqa.com/droppable");
+        removeAds();
+
+        SelenideElement source = $("#draggable");
+        SelenideElement target = $("#droppable");
+
+        // Use native Selenium Actions as fallback
+        new Actions(WebDriverRunner.getWebDriver())
+                .dragAndDrop(source, target)
+                .perform();
+
+        // Assertion
+        target.shouldHave(text("Dropped!"));
+    }
 }

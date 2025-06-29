@@ -17,6 +17,7 @@ public class TestBase {
         if (System.getenv("CI") != null) {
             Configuration.headless = true;
         }
+
         Configuration.browserSize = "1920x1080";
     }
 
@@ -36,7 +37,7 @@ public class TestBase {
     }
 
 
-    @BeforeMethod
+
     public void removeAds() {
         try {
             sleep(1000); // wait for ads to load
